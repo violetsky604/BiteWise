@@ -1,0 +1,19 @@
+<!doctype html><meta charset="utf-8">
+<title>BiteWise – My Foods</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<body style="font-family:sans-serif;padding:16px">
+<h1>My Foods</h1>
+<div id="list">Loading…</div>
+<script>
+  const foods = JSON.parse(localStorage.getItem('bw_myfoods') || '[]');
+  const el = document.getElementById('list');
+  if (!foods.length) el.textContent = 'No saved foods yet.';
+  else el.innerHTML = foods.map(f => `
+    <div style="border:1px solid #eee;border-radius:8px;padding:10px;margin:8px 0;">
+      <strong>${f.name}</strong>${f.brand ? ' — ' + f.brand : ''}<br>
+      ${f.barcode ? 'Barcode: '+f.barcode+' • ' : ''}Serving: ${f.serving_size ?? '—'} ${f.serving_unit ?? ''}<br>
+      kcal: ${f.calories ?? '—'} • P: ${f.protein ?? '—'}g • C: ${f.carbs ?? '—'}g • F: ${f.fat ?? '—'}g
+    </div>
+  `).join('');
+</script>
+</body>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BiteWise – Smart Nutrition Tracking</title>
+  <link rel="stylesheet" href="css/bitewise.css?v=24">
+</head>
+<body>
+  <!-- Shared banner + nav -->
+  <div id="sharedBanner"></div>
+  <script>
+    fetch('banner-nav.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('sharedBanner').innerHTML = html;
+      });
+  </script>
+
+  <main class="container">
+    <!-- Main content wrapper with tinted background -->
+    <section class="panel">
+      <article class="card">
+        <h2>Food Lookup</h2>
+        <p>Scan a barcode or search a product to view calories and macros.</p>
+        <div class="actions">
+          <a class="btn" href="lookup.html">Open Lookup</a>
+          <a class="btn outline" href="lookup.html#help">How it works</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Daily Dashboard</h2>
+        <p>Track your calories and macros each day and see weekly trends.</p>
+        <div class="actions">
+          <a class="btn" href="dashboard.html">Open Dashboard</a>
+          <a class="btn outline" href="dashboard.html#setup">Set targets</a>
+        </div>
+      </article>
+
+      <footer>© 2025 BiteWise Project</footer>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>BiteWise — Lookup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/bitewise.css?v=25">
+</head>
+
+<body class="app">
+  <!-- Shared banner + nav -->
+  <div id="sharedBanner"></div>
+  <script>
+    fetch('banner-nav.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('sharedBanner').innerHTML = html;
+
+        // highlight active page
+        const path = location.pathname.split('/').pop();
+        document.querySelectorAll('.pill').forEach(link => {
+          if (link.getAttribute('href') === path) link.classList.add('active');
+        });
+      });
+  </script>
+
+  <main>
+    <!-- Scanner Controls -->
+    <section class="card">
+      <h2>Food Lookup</h2>
+      <p>Scan a barcode or search for a product to see its nutrition details.</p>
+
+      <div class="scanner-controls">
+        <button id="start" class="btn">📷 Start Scanner</button>
+        <button id="stop" class="btn outline" disabled>Stop</button>
+        <select id="cameras" title="Camera"></select>
+      </div>
+
+      <div class="lookup-controls">
+        <input id="codeInput" type="text" placeholder="Enter barcode…" />
+        <button id="search" class="btn">Search</button>
+        <span id="status" class="tiny pill muted">Idle</span>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="card">
+      <h3>Results</h3>
+      <div id="preview" class="preview" hidden></div>
+      <div id="out" class="card muted">No results yet.</div>
+    </section>
+
+    <!-- Daily Tracker -->
+    <section class="card tracker">
+      <div class="tracker-header">
+        <button id="prevDay" class="tiny">◀</button>
+        <h3 id="dateLabel">Foods for 2025-10-06</h3>
+        <button id="nextDay" class="tiny">▶</button>
+      </div>
+
+      <div id="todayBox"></div>
+      <div id="totalBox" class="total">Total: 0 kcal</div>
+    </section>
+  </main>
+
+  <footer>© 2025 BiteWise Project</footer>
+
+  <!-- JS -->
+  <script src="https://unpkg.com/@zxing/browser@latest"></script>
+    <script src="js/camera.js?v=split2"></script>
+  <script src="js/ui.js?v=split2"></script>
+
+</body>
+</html>
