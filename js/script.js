@@ -423,38 +423,21 @@ function initializeChat() {
 
 // Forms functions
 function initializeForms() {
-  const profileForm = document.getElementById("profileForm")
-  const goalForm = document.getElementById("goalForm")
+  const profileForm = document.getElementById("profileForm");
 
+  // ✅ Keep profile save working
   profileForm?.addEventListener("submit", function (e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    // Simulate saving profile
-    const formData = new FormData(this)
-    console.log("Profile saved:", Object.fromEntries(formData))
+    const formData = new FormData(this);
+    console.log("Profile saved:", Object.fromEntries(formData));
 
-    // Show success message
-    alert("Profile saved successfully!")
-  })
+    alert("Profile saved successfully!");
+  });
 
-  goalForm?.addEventListener("submit", function (e) {
-    e.preventDefault()
-
-    // Simulate creating goal
-    const formData = new FormData(this)
-    const goalData = Object.fromEntries(formData)
-    console.log("Goal created:", goalData)
-
-    // Close modal
-    document.getElementById("goalModal").classList.remove("active")
-
-    // Show success message
-    alert("Goal created successfully!")
-
-    // Reset form
-    this.reset()
-  })
+  // 🧹 Removed goalForm logic (now handled entirely by goals.js)
 }
+
 
 // Modals functions
 function initializeModals() {
