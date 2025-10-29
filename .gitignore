@@ -1,0 +1,6 @@
+/api/
+/php/
+/config/
+/*.php
+*.env
+*.zip

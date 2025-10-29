@@ -1,0 +1,27 @@
+<!-- profile.html -->
+<h2>Your Profile</h2>
+<div id="profileDisplay"></div>
+<button id="editProfile">Edit Profile</button>
+
+<script>
+  const data = JSON.parse(localStorage.getItem('bw_profile'));
+  const display = document.getElementById('profileDisplay');
+
+  if (data) {
+    display.innerHTML = `
+      <p><strong>Age:</strong> ${data.age}</p>
+      <p><strong>Weight:</strong> ${data.weight}</p>
+      <p><strong>Height:</strong> ${data.height}</p>
+      <p><strong>Gender:</strong> ${data.gender}</p>
+      <p><strong>Activity Level:</strong> ${data.activityLevel}</p>
+      <p><strong>Blood Type:</strong> ${data.bloodType}</p>
+      <p><strong>Allergies:</strong> ${data.allergies}</p>
+    `;
+  } else {
+    display.textContent = "No profile saved yet.";
+  }
+
+  document.getElementById('editProfile').addEventListener('click', () => {
+    window.location.href = 'profile-form.html'; // go back to the form page
+  });
+</script>
